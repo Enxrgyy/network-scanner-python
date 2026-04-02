@@ -33,3 +33,14 @@ def scan_port(host, port, timeout=1):
         return False
     finally:
         s.close()
+
+def port_scan(host, ports, timeout=1):
+    puertos_abiertos = []
+    print(f"\nEscaneando puertos en {host}...")
+
+    for puerto in ports:
+        if scan_port(host, puerto, timeout):
+            print(f"[+] Puerto {puerto} ABIERTO 🔓")
+            puertos_abiertos.append(puerto)
+
+    return puertos_abiertos
