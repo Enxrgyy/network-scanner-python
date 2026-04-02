@@ -44,3 +44,23 @@ def port_scan(host, ports, timeout=1):
             puertos_abiertos.append(puerto)
 
     return puertos_abiertos
+
+if __name__ == "__main__":
+    print("--- INICIANDO ESCÁNER DE RED INACAP ---")
+
+    # Valor por defecto seguro
+    mi_red = "192.168.1."
+
+    # Si el usuario pasa argumento, lo usa
+    if args.target is not None:
+        mi_red = args.target
+
+    equipos_activos = ping_sweep(mi_red)
+
+    if equipos_activos:
+        primer_equipo = equipos_activos[0]
+        puertos = [21, 22, 80, 443]
+        port_scan(primer_equipo, puertos)
+    else:
+        print("No se encontraron equipos activos.")
+        
