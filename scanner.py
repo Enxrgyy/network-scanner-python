@@ -10,3 +10,15 @@ def ping(host):
     comando = ["ping", "-n", "1", "-w", "500", host]
     resultado = subprocess.run(comando, capture_output=True, text=True)
     return resultado.returncode == 0
+
+def ping_sweep(red_base):
+    hosts_activos = []
+    print(f"\nIniciando escaneo en la red {red_base}X ...")
+
+    for numero in range(1, 255):
+        ip_objetivo = f"{red_base}{numero}"
+        if ping(ip_objetivo):
+            print(f"[+] Equipo activo: {ip_objetivo}")
+            hosts_activos.append(ip_objetivo)
+
+    return hosts_activos
