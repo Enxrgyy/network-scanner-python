@@ -22,3 +22,14 @@ def ping_sweep(red_base):
             hosts_activos.append(ip_objetivo)
 
     return hosts_activos
+
+def scan_port(host, port, timeout=1):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(timeout)
+    try:
+        resultado = s.connect_ex((host, port))
+        return resultado == 0
+    except:
+        return False
+    finally:
+        s.close()
