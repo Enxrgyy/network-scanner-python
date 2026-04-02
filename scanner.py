@@ -1,7 +1,3 @@
-def main():
-    print("Network Scanner iniciado")
+def ping_sweep(subred, timeout=1):
 
-
-if __name__ == "__main__":
-    main()
-    
+def scan_ports(host, puertos, timeout=1)
