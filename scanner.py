@@ -60,9 +60,19 @@ def detectar_servicio(host, puerto):
         s = socket.socket()
         s.settimeout(1)
         s.connect((host, puerto))
-        banner = s.recv(1024).decode().strip()
+
+        # 🔥 Si es HTTP, enviamos petición
+        if puerto == 80:
+            s.send(b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n")
+
+        banner = s.recv(1024).decode(errors="ignore").strip()
         s.close()
-        return banner
+
+        if banner:
+            return banner.split("\n")[0]  # solo primera línea
+        else:
+            return "Sin respuesta"
+
     except:
         return "Desconocido"
 
