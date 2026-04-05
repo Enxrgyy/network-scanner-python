@@ -19,7 +19,7 @@ def ping_sweep(red_base):
     for numero in range(1, 255):
         ip_objetivo = f"{red_base}{numero}"
         if ping(ip_objetivo):
-            print(f"[+] Equipo activo: {ip_objetivo}")
+            print(f"[✔] Equipo activo: {ip_objetivo}")
             hosts_activos.append(ip_objetivo)
 
     return hosts_activos
@@ -89,8 +89,11 @@ if __name__ == "__main__":
     mi_red = "192.168.1."
 
     # Si el usuario pasa argumento, lo usa
-    if args.target is not None:
-        mi_red = args.target
+    if args.target:
+     if not args.target.endswith("."):
+        print("⚠️ La red debe terminar en punto (ej: 192.168.1.)")
+        exit()
+     mi_red = args.target
 
     equipos_activos = ping_sweep(mi_red)
 
