@@ -1,3 +1,4 @@
+import threading
 import subprocess
 import socket
 import argparse
@@ -36,12 +37,20 @@ def scan_port(host, port, timeout=1):
 
 def port_scan(host, ports, timeout=1):
     puertos_abiertos = []
-    print(f"\nEscaneando puertos en {host}...")
+    hilos = []
 
-    for puerto in ports:
+    def scan(puerto):
         if scan_port(host, puerto, timeout):
             print(f"[+] Puerto {puerto} ABIERTO 🔓")
             puertos_abiertos.append(puerto)
+
+    for puerto in ports:
+        hilo = threading.Thread(target=scan, args=(puerto,))
+        hilos.append(hilo)
+        hilo.start()
+
+    for hilo in hilos:
+        hilo.join()
 
     return puertos_abiertos
 
