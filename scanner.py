@@ -41,7 +41,8 @@ def port_scan(host, ports, timeout=1):
 
     def scan(puerto):
         if scan_port(host, puerto, timeout):
-            print(f"[+] Puerto {puerto} ABIERTO 🔓")
+            servicio = detectar_servicio(host, puerto)
+            print(f"[+] Puerto {puerto} ABIERTO 🔓 | Servicio: {servicio}")
             puertos_abiertos.append(puerto)
 
     for puerto in ports:
@@ -53,6 +54,17 @@ def port_scan(host, ports, timeout=1):
         hilo.join()
 
     return puertos_abiertos
+
+def detectar_servicio(host, puerto):
+    try:
+        s = socket.socket()
+        s.settimeout(1)
+        s.connect((host, puerto))
+        banner = s.recv(1024).decode().strip()
+        s.close()
+        return banner
+    except:
+        return "Desconocido"
 
 if __name__ == "__main__":
     print("--- INICIANDO ESCÁNER DE RED INACAP ---")
