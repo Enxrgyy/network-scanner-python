@@ -75,6 +75,12 @@ def detectar_servicio(host, puerto):
 
     except:
         return "Desconocido"
+    
+def guardar_resultados(host, puertos):
+    with open("resultados.txt", "a") as archivo:
+        archivo.write(f"\nHost: {host}\n")
+        archivo.write(f"Puertos abiertos: {puertos}\n")
+        
 
 if __name__ == "__main__":
     print("--- INICIANDO ESCÁNER DE RED INACAP ---")
