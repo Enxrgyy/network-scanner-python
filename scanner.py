@@ -61,15 +61,15 @@ def detectar_servicio(host, puerto):
         s.settimeout(1)
         s.connect((host, puerto))
 
-        # 🔥 Si es HTTP, enviamos petición
+        # Intento de comunicación para HTTP
         if puerto == 80:
-            s.send(b"GET / HTTP/1.1\r\nHost: example.com\r\n\r\n")
+            s.send(b"GET / HTTP/1.1\r\nHost: test\r\n\r\n")
 
         banner = s.recv(1024).decode(errors="ignore").strip()
         s.close()
 
         if banner:
-            return banner.split("\n")[0]  # solo primera línea
+            return banner.split("\n")[0]
         else:
             return "Sin respuesta"
 
@@ -97,7 +97,8 @@ if __name__ == "__main__":
     if equipos_activos:
         primer_equipo = equipos_activos[0]
         puertos = [21, 22, 80, 443]
-        port_scan(primer_equipo, puertos)
+        puertos_abiertos = port_scan(primer_equipo, puertos)
+        guardar_resultados(primer_equipo, puertos_abiertos)
     else:
         print("No se encontraron equipos activos.")
         
