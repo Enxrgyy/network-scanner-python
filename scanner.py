@@ -14,13 +14,23 @@ def ping(host):
 
 def ping_sweep(red_base):
     hosts_activos = []
-    print(f"\nIniciando escaneo en la red {red_base}X ...")
+    hilos = []
+
+    print(f"\n🔍 Escaneando red {red_base}X ...")
+
+    def scan(ip):
+        if ping(ip):
+            print(f"[✔] Equipo activo: {ip}")
+            hosts_activos.append(ip)
 
     for numero in range(1, 255):
         ip_objetivo = f"{red_base}{numero}"
-        if ping(ip_objetivo):
-            print(f"[✔] Equipo activo: {ip_objetivo}")
-            hosts_activos.append(ip_objetivo)
+        hilo = threading.Thread(target=scan, args=(ip_objetivo,))
+        hilos.append(hilo)
+        hilo.start()
+
+    for hilo in hilos:
+        hilo.join()
 
     return hosts_activos
 
