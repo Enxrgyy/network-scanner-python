@@ -98,10 +98,12 @@ if __name__ == "__main__":
     equipos_activos = ping_sweep(mi_red)
 
     if equipos_activos:
-        primer_equipo = equipos_activos[0]
-        puertos = [21, 22, 23, 25, 53, 80, 110, 139, 143, 443, 445, 3389]
-        puertos_abiertos = port_scan(primer_equipo, puertos)
-        guardar_resultados(primer_equipo, puertos_abiertos)
+        puertos = [21, 22, 80, 443]
+
+        for equipo in equipos_activos:
+         print(f"\n🔍 Escaneando equipo: {equipo}")
+         puertos_abiertos = port_scan(equipo, puertos)
+         guardar_resultados(equipo, puertos_abiertos)
     else:
         print("No se encontraron equipos activos.")
         

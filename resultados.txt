@@ -16,3 +16,21 @@ Puertos abiertos: [80, 22, 443]
 
 Host: 192.168.1.1
 Puertos abiertos: [22, 80, 443]
+
+Host: 192.168.1.1
+Puertos abiertos: [80, 22, 443]
+
+Host: 192.168.1.1
+Puertos abiertos: [80, 22, 443]
+
+Host: 192.168.1.1
+Puertos abiertos: [80, 22, 443]
+
+Host: 192.168.1.157
+Puertos abiertos: []
+
+Host: 192.168.1.192
+Puertos abiertos: []
+
+Host: 192.168.1.197
+Puertos abiertos: []
