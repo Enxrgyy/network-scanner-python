@@ -99,9 +99,10 @@ if __name__ == "__main__":
 
     if equipos_activos:
         primer_equipo = equipos_activos[0]
-        puertos = [21, 22, 80, 443]
+        puertos = [21, 22, 23, 25, 53, 80, 110, 139, 143, 443, 445, 3389]
         puertos_abiertos = port_scan(primer_equipo, puertos)
         guardar_resultados(primer_equipo, puertos_abiertos)
     else:
         print("No se encontraron equipos activos.")
         
+        print("\n✅ Escaneo finalizado")
