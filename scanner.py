@@ -114,7 +114,7 @@ if __name__ == "__main__":
     equipos_activos = ping_sweep(mi_red)
 
     if equipos_activos:
-        puertos = [21, 22, 80, 443]
+        puertos = [21, 22, 23, 25, 53, 80, 110, 139, 143, 443, 445, 3389, 8080]
 
         for equipo in equipos_activos:
          print(f"\n🔍 Escaneando equipo: {equipo}")

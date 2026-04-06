@@ -4,8 +4,12 @@ Puerto 80 -> HTTP/1.1 200 Ok
 Puerto 22 -> SSH-2.0-dropbear_2019.78
 Puerto 443 -> Desconocido
 
-Host: 192.168.1.197
+Host: 192.168.1.108
 No se encontraron puertos abiertos
 
 Host: 192.168.1.192
 No se encontraron puertos abiertos
+
+Host: 192.168.1.197
+Puerto 445 -> Desconocido
+Puerto 139 -> Desconocido
