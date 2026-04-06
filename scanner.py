@@ -103,7 +103,13 @@ if __name__ == "__main__":
         for equipo in equipos_activos:
          print(f"\n🔍 Escaneando equipo: {equipo}")
          puertos_abiertos = port_scan(equipo, puertos)
+         if puertos_abiertos:
+             print(f"[✔] Puertos abiertos en {equipo}: {puertos_abiertos}")
+         else: 
+             print(f"[✖] No se encontraron puertos abiertos en {equipo}")
+
          guardar_resultados(equipo, puertos_abiertos)
+    
     else:
         print("No se encontraron equipos activos.")
         
