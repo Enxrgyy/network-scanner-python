@@ -77,9 +77,15 @@ def detectar_servicio(host, puerto):
         return "Desconocido"
     
 def guardar_resultados(host, puertos):
-    with open("resultados.txt", "a") as archivo:
+    with open("resultados.txt", "a", encoding="utf-8") as archivo:
         archivo.write(f"\nHost: {host}\n")
-        archivo.write(f"Puertos abiertos: {puertos}\n")
+
+        if puertos:
+            for puerto in puertos:
+                servicio = detectar_servicio(host, puerto)
+                archivo.write(f"Puerto {puerto} → {servicio}\n")
+        else:
+            archivo.write("No se encontraron puertos abiertos\n")
         
 
 if __name__ == "__main__":
