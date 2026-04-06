@@ -53,7 +53,7 @@ def port_scan(host, ports, timeout=1):
         if scan_port(host, puerto, timeout):
             servicio = detectar_servicio(host, puerto)
             print(f"[+] Puerto {puerto} ABIERTO 🔓 | Servicio: {servicio}")
-            puertos_abiertos.append(puerto)
+            puertos_abiertos.append((puerto, servicio))
 
     for puerto in ports:
         hilo = threading.Thread(target=scan, args=(puerto,))
@@ -91,9 +91,8 @@ def guardar_resultados(host, puertos):
         archivo.write(f"\nHost: {host}\n")
 
         if puertos:
-            for puerto in puertos:
-                servicio = detectar_servicio(host, puerto)
-                archivo.write(f"Puerto {puerto} → {servicio}\n")
+            for puerto, servicio in puertos:
+                archivo.write(f"Puerto {puerto} -> {servicio}\n")
         else:
             archivo.write("No se encontraron puertos abiertos\n")
         
