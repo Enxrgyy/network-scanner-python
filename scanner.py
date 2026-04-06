@@ -90,6 +90,7 @@ def guardar_resultados(host, puertos):
 
 if __name__ == "__main__":
     print("--- INICIANDO ESCÁNER DE RED INACAP ---")
+    open("resultados.txt", "w").close()
 
     # Valor por defecto seguro
     mi_red = "192.168.1."
