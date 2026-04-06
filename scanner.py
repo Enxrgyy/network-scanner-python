@@ -105,4 +105,4 @@ if __name__ == "__main__":
     else:
         print("No se encontraron equipos activos.")
         
-        print("\n✅ Escaneo finalizado")
+    print("\n✅ Escaneo finalizado")
