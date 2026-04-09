@@ -1,37 +1,63 @@
 Network Scanner - Grupo CHM
-Herramienta de reconocimiento de red local desarrollada en Python para la detección de hosts y servicios. Proyecto académico para la asignatura de Redes Avanzadas en INACAP.
+Herramienta de reconocimiento de red local desarrollada en Python para la asignatura de Redes Avanzadas en INACAP.
 
-Equipo de trabajo
+Descripcion
+Este proyecto consiste en crear un escáner de red tipo NMAP. La herramienta permite mapear la red local, identificar servicios activos y generar reportes automatizados mediante una arquitectura basada en la librería estándar de Python.
+
+Funcionalidades clave
+Escaneo rapido (Threading): Ejecución en paralelo para procesar múltiples puertos simultáneamente.
+
+Host Discovery: Identificación de equipos activos mediante Ping Sweep (ICMP).
+
+Service Mapping: Análisis de disponibilidad en puertos TCP comunes.
+
+Identificacion de servicios: Banner grabbing para detectar versiones de software y nombres de servicios.
+
+Interfaz Dual: Soporte para línea de comandos (CLI) y entorno gráfico (GUI) basado en Tkinter.
+
+Requisitos y Dependencias
+Python 3.8 o superior.
+
+Sistemas Operativos: Windows o Linux.
+
+Permisos: Requiere privilegios de administrador para la correcta ejecución de comandos de red.
+
+Nota sobre dependencias: El proyecto utiliza exclusivamente la librería estándar de Python (socket, subprocess, threading, tkinter, argparse). No es necesario realizar instalaciones externas.
+
+Uso de la Herramienta
+Interfaz Grafica (Recomendado)
+Para iniciar la versión visual con entorno gráfico:
+
+Bash
+python gui.py
+Linea de Comandos (CLI)
+Para ejecutar el escaneo directamente desde la terminal:
+
+Bash
+python scanner.py --network 192.168.1
+Estructura del Proyecto
+gui.py: Interfaz Gráfica de Usuario y manejo de eventos visuales.
+
+scanner.py: Motor principal, lógica de red y soporte para terminal.
+
+resultados.txt: Archivo de texto autogenerado con el reporte del último escaneo.
+
+README.md: Documentación técnica del proyecto.
+
+Objetivos
+Detectar hosts activos mediante un barrido de red acelerado por hilos.
+
+Identificar puertos abiertos y servicios asociados en los equipos detectados.
+
+Asegurar una ejecución fluida mediante el manejo de procesos en segundo plano.
+
+Automatizar la generación de reportes técnicos.
+
+Equipo de Trabajo
 Hernán Vera: Líder de Proyecto / Gestión de Git.
 
 Matías Peralta: Desarrollador / Lógica de Sockets.
 
 Claudio Zambra: Documentación Técnica.
-
-Especificaciones Técnicas
-El script opera bajo dos módulos de análisis:
-
-Ping Sweep: Identificación de hosts activos mediante tráfico ICMP en el segmento de red.
-
-Port Scan: Verificación de disponibilidad en servicios críticos (21, 22, 80, 443) mediante conexiones TCP.
-
-Requisitos
-Python 3.x
-
-Privilegios de administrador para la gestión de sockets y comandos de red.
-
-Instrucciones de Ejecución
-Escaneo de red predeterminado (192.168.1.0/24):
-
-Bash
-python escaneoredes.py
-Escaneo de host específico:
-
-Bash
-python escaneoredes.py -t <IP_OBJETIVO>
-Nota sobre control de versiones: Antes de ejecutar, verifique que el archivo no contenga marcas de conflicto (<<<<<<<, =======).
-
-Aviso Legal
-Software con fines educativos. El uso de esta herramienta en redes sin autorización es responsabilidad exclusiva del usuario.
 
 2026 | INACAP
