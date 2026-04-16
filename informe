@@ -1,0 +1,35 @@
+Informe y documentación Escáner de red 
+REDES AVANZADAS 1
+Integrantes:        Matias Peralta
+                    Hernán Vera
+                    Claudio Zambra
+Profesor: Rodrigo Ledezma
+Carrera: Ingeniería en Telecomunicaciones, Conectividad y Redes
+
+Introducción
+
+El objetivo principal de este proyecto consistió en construir una herramienta capaz de identificar los equipos dentro una subred específica, descubriendo cuales están activos mediante un barrido de red (Ping Sweep) y posteriormente analizando los puertos TCP abiertos en cada host descubierto. Para que esta herramienta sea más atractiva, el desarrollo no solo fue hecho mediante la ejecución lógica mediante una Interfaz de Línea de Comandos (CLI), sino también la implementación de una Interfaz Gráfica de Usuario (GUI) amigable al usuario y la generación de reportes automatizados.
+A lo largo del desarrollo, la herramienta experimentó una evolución significativa, transitando de un script secuencial básico a un auditor de red concurrente y eficiente, capaz de realizar reconocimiento de servicios (Banner Grabbing) en tiempo real.
+
+Documentación
+
+Para empezar, definimos los roles dentro del equipo quedando de la siguiente manera: 
+Hernán Vera: Líder de Proyecto / Gestión de Git.
+Matías Peralta: Desarrollador / Lógica de Sockets.
+Claudio Zambra: Documentación Técnica.
+
+Desarrollo código: 
+El escáner de red se dividió en fases, permitiendo implementar mejoras continuas sobre la base del código. A continuación, se detallan los componentes técnicos y la evolución operativa de la herramienta:
+Arquitectura Base y Lógica de Escaneo
+El núcleo de la aplicación (scanner.py) fue construido utilizando exclusivamente la Librería Estándar de Python (socket, subprocess, sys), garantizando la portabilidad del código sin depender de instalaciones de terceros.
+Ping Sweep (ICMP): Se implementó una función que itera sobre el último octeto de una dirección IP base (x.x.x.1 al x.x.x.254), enviando paquetes ICMP para determinar la disponibilidad del host en la red local.
+Port Scan (TCP Connect): Para los equipos que responden al ping, el escáner evalúa una lista predefinida de puertos críticos (FTP, SSH, HTTP, HTTPS, SMB, entre otros) utilizando conexiones mediante sockets.
+
+
+
+
+
+
+
+
+
